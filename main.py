@@ -16,12 +16,12 @@ def add_ignored_theme_to_zshrc(new_ignored_theme_name):
         ignored_theme_names = [x.strip() for x in m.group(1).split(" ")]
 
     ignored_theme_names.append(new_ignored_theme_name)
-    new_line = "ZSH_THEME_RANDOM_IGNORED=(" + " ".join(ignored_theme_names) + ")"
+    new_line = f"ZSH_THEME_RANDOM_IGNORED=({' '.join(ignored_theme_names)})"
 
     if m:
         new_all = p.sub(new_line, all)
     else:
-        new_all = all + "\n" + new_line
+        new_all = f"{all}\n{new_line}"
 
     with open(zshrc_path, "w") as zshrc_file:
         zshrc_file.write(new_all)
