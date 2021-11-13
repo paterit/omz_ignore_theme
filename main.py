@@ -1,5 +1,6 @@
 import os
 import sys
+import re
 
 # Extend section ZSH_THEME_RANDOM_IGNORED in the .zshrc file with theme name
 def add_ignored_themes_to_zshrc(ignored_theme_names):
@@ -27,31 +28,23 @@ def add_ignored_themes_to_zshrc(ignored_theme_names):
         zshrc_file.write("".join(zshrc_new_lines))
 
 
-# Get items from ZSH_THEME_RANDOM_IGNORED section from the .zshrc file
 def get_ignored_themes_from_zshrc():
     zshrc_path = os.path.expanduser("~/.zshrc_bak")
     ignored_themes = []
-    in_ignored_themes = False
     with open(zshrc_path, "r") as zshrc_file:
-        for line in zshrc_file:
-            if "ZSH_THEME_RANDOM_IGNORED" in line:
-                if ")" in line:
-                    return line.split("=")[1].split("(")[1].split(")")[0].split(" ")
-                else:
-                    in_ignored_themes = True
-            elif in_ignored_themes:
-                if ")" in line:
-                    in_ignored_themes = False
-                else:
-                    ignored_themes.append(line.strip())
-    return ignored_themes
+        all = zshrc_file.read()
+    p = re.compile("^ZSH_THEME_RANDOM_IGNORED=\(\s*((?:\w+\s*)+)\)$", re.MULTILINE)
+    m = p.search(all)
+    if m:
+        ignored_themes = m.group(1).split(" ")
+    return [x.strip() for x in ignored_themes]
 
 
 def main():
     assert len(sys.argv) == 2, "Usage: main.py <theme_name>"
     random_theme = sys.argv[1]
 
-    current = get_ignored_themes_from_zshrc()
+    current = get_ignored_themes_from_zshrc2()
     current.append(random_theme)
     add_ignored_themes_to_zshrc(current)
 
