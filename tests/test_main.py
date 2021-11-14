@@ -1,5 +1,4 @@
-from main import build_new_zshrc_content
-
+from omz_theme_ignore.main import build_new_zshrc_content
 
 CONTENT_EMPTY_SECTION_BEFORE = """
 ZSH_THEME="random"
