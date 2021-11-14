@@ -38,7 +38,7 @@ def main():
     random_theme = sys.argv[1]
     assert re.match("^[a-zA-Z0-9_]+$", random_theme), "Theme name must be alphanumeric"
 
-    zshrc_path = Path(os.path.expanduser("~/.zshrc_bak"))
+    zshrc_path = Path(os.path.expanduser("~/.zshrc"))
     zshrc_path.write_text(build_new_zshrc_content(random_theme, zshrc_path.read_text()))
 
 
