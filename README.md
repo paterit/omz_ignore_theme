@@ -1,4 +1,4 @@
-# omz_ignore_theme
+# omz_theme_ignore_py
 
 Add current RANDOM_THEME from oh-my-zsh to the .zshrc file to the ZSH_RANDOM_IGNORE_THEME section. Use via zsh alias via source:
 
