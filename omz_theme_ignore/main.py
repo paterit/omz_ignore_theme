@@ -22,10 +22,9 @@ def build_new_zshrc_content(new_ignored_theme_name: str, zshrc_content: str) -> 
     )
     ignored_theme_names, section_exists = get_existing_themes(regex, zshrc_content)
     ignored_theme_names.append(new_ignored_theme_name)
+    ignored_theme_names = sorted(set(ignored_theme_names))  # remove duplicates
 
-    new_line = (
-        f"ZSH_THEME_RANDOM_IGNORED=({' '.join(sorted(ignored_theme_names)).strip()})"
-    )
+    new_line = f"ZSH_THEME_RANDOM_IGNORED=({' '.join(ignored_theme_names).strip()})"
 
     if section_exists:
         return regex.sub(new_line, zshrc_content)

@@ -59,6 +59,12 @@ def test_multi_line():
     )
 
 
+def test_duplicates_line():
+    assert CONTENT_SINGLE_LINE_BEFORE == build_new_zshrc_content(
+        "sd29", CONTENT_SINGLE_LINE_BEFORE
+    )
+
+
 def test_single_line():
     assert CONTENT_SINGLE_LINE_AFTER == build_new_zshrc_content(
         "new_theme", CONTENT_SINGLE_LINE_BEFORE
