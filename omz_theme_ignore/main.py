@@ -33,13 +33,16 @@ def build_new_zshrc_content(new_ignored_theme_name: str, zshrc_content: str) -> 
 
 
 def main():
-    assert len(sys.argv) == 2, "Usage: main.py <theme_name>"
+    assert len(sys.argv) > 1, "Usage: main.py <theme_name>"
     random_theme = sys.argv[1]
     assert re.match("^[a-zA-Z0-9_]+$", random_theme), "Theme name must be alphanumeric"
 
-    zshrc_path = Path(os.path.expanduser("~/.zshrc"))
+    zshrc_path = Path(
+        sys.argv[2] if len(sys.argv) > 2 else Path(os.path.expanduser("~/.zshrc"))
+    )
+
     zshrc_path.write_text(build_new_zshrc_content(random_theme, zshrc_path.read_text()))
 
 
 if __name__ == "__main__":
-    main()
+    main()  # pragma: no cover
