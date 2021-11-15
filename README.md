@@ -1,10 +1,10 @@
 # omz_theme_ignore_py
 
-Add current RANDOM_THEME from oh-my-zsh to the .zshrc file to the ZSH_RANDOM_IGNORE_THEME section. Use via zsh alias via source:
+Add current RANDOM_THEME from [oh-my-zsh](https://ohmyz.sh) to the .zshrc file to the ZSH_RANDOM_IGNORE_THEME section. Use as a zsh alias via python script:
 
 `alias it="python3 omz_theme_ignore/main.py $RANDOM_THEME"`
 
-or via package after installing via pip:
+or via package:
 
 `python3 -m pip install omz_theme_ignore`
 
