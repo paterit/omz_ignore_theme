@@ -1,3 +1,5 @@
+[![Python application](https://github.com/paterit/omz_theme_ignore_py/actions/workflows/python-app.yml/badge.svg)](https://github.com/paterit/omz_theme_ignore_py/actions/workflows/python-app.yml)
+
 # omz_theme_ignore_py
 
 Add current RANDOM_THEME from [oh-my-zsh](https://ohmyz.sh) to the .zshrc file to the ZSH_RANDOM_IGNORE_THEME section. Use as a zsh alias via python script:
