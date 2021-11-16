@@ -11,4 +11,6 @@ TODO
 .pytest_cache
 .pyenv
 .python-version
+*.pyc
+
 
