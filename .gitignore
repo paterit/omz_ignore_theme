@@ -5,3 +5,10 @@ poetry.lock
 dist
 TODO
 .coverage
+.tox
+.cache
+.mypy_cache
+.pytest_cache
+.pyenv
+.python-version
+
